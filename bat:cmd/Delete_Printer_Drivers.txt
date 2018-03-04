@@ -1,0 +1,10 @@
+@echo off
+::Delete All Printer Drivers Script
+net stop spooler
+taskkill /F /IM explorer.exe
+taskkill /F /IM spoolsv.exe
+taskkill /F /IM printisolationhost.exe
+cd /d %windir%\system32\spool\drivers
+for /F “delims=” %%i in (‘dir /b’) do (rmdir “%%i” /s/q || del “%%i” /s/q)
+start explorer.exe
+net start spooler
