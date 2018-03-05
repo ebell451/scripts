@@ -1,10 +1,26 @@
+<#
+==============================================================================
+ Gather information from a remote machine. Useful for TS.
+==============================================================================
+ Created: [05/21/2015]
+ Author: Ethan Bell
+ Company: Allied Virtual Office Assistants
+ Arguments: N/A
+==============================================================================
+ Source: Original script was created by a co-worker
+==============================================================================
+ Purpose: Gathers information from a remote machine on current LAN.
+ Useful for troubleshooting issues on the system.
+==============================================================================
+#>
+
 set FormatedTime=%date:~10,4%_%date:~7,2%_%date:~4,2%__%Time:~0,2%_%time:~3,2%
 set FormatedTime=%FormatedTime: =%
 
 set startdir=%cd%
 
 If NOT exist "C:\ScriptLogs\Gather\[%1]" (
-md C:\ScriptLogs\Gather\%1 
+md C:\ScriptLogs\Gather\%1
 )
 
 :: Turn on Remote Registry
@@ -56,7 +72,7 @@ Echo. >> C:\ScriptLogs\Gather\%1\%1.txt
 powershell "Get-Service -computername %1 | sort-object status -descending" >> C:\ScriptLogs\Gather\%1\%1.txt
 Echo. >> C:\ScriptLogs\Gather\%1\%1.txt
 
-:: Get Printer List 
+:: Get Printer List
 
 Echo. >> C:\ScriptLogs\Gather\%1\%1.txt
 
@@ -90,7 +106,7 @@ start explorer.exe C:\ScriptLogs\Gather\%1\
 
 psservice /accepteula \\%1 stop RemoteRegistry >> C:\ScriptLogs\Gather\%1\%1.txt
 
-:: Remote Sysinternals reg entries
+:: Remove Sysinternals reg entries
 
 Echo:Remove Sysinternals Reg entries. >> C:\ScriptLogs\Gather\%1\%1.txt
 REG DELETE HKCU\Software\Sysinternals /f >> C:\ScriptLogs\Gather\%1\%1.txt
