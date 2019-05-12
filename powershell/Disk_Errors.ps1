@@ -1,4 +1,21 @@
-﻿if ((get-host).Version.Major -ge 4){
+﻿<#
+==============================================================================
+ DISK ERRORS
+==============================================================================
+ Created: [11/12/2016]
+ Author: Ethan Bell
+ Arguments: N/A
+==============================================================================
+ Modified: 
+ Modifications: 
+==============================================================================
+ Purpose: This script is used to check for any reported errors on the disk or
+    potential erros on the disk.
+ Options: 
+==============================================================================
+#>
+
+if ((get-host).Version.Major -ge 4) {
 $XmlQuery = [xml]@'
 <QueryList>
   <Query Id="0" Path="System">
