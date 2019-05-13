@@ -21,5 +21,7 @@ $folders = @(
     'C:\Users\*\Appdata\Local\Temp\*',
     'C:\Users\*\Appdata\Local\Microsoft\Windows\Temporary Internet Files\*',
     'C:\Windows\SoftwareDistribution\Download',
-    'C:\Windows\System32\FNTCACHE.DAT')
-foreach ($folder in $folders) {Remove-Item $folder -force -recurse -ErrorAction SilentlyContinue};
+    'C:\Windows\System32\FNTCACHE.DAT',
+    'C:\Users\Administrator\AppData\Local\CrashDumps'
+)
+foreach ($folder in $folders) { Remove-Item $folder -force -recurse -ErrorAction SilentlyContinue };
